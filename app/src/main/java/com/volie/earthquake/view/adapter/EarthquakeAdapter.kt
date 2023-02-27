@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.volie.earthquake.R
 import com.volie.earthquake.databinding.AdapterItemEarthquakeBinding
 import com.volie.earthquake.model.EarthquakeModel
 
@@ -20,12 +19,10 @@ class EarthquakeAdapter : RecyclerView.Adapter<EarthquakeAdapter.EarthquakeViewH
                 txtName.text = items[position].name
                 txtDate.text = items[position].date
                 txtTime.text = items[position].time
+                divider.setBackgroundColor(items[position].magnitudeColor)
                 cardMag.setBackgroundColor(items[position].magnitudeColor)
+                root.setBackgroundColor(items[position].magnitudeColorLight)
             }
-
-            val backGround = R.drawable.item_background as ViewGroup
-            backGround.setBackgroundColor(items[position].magnitudeColorLight)
-            //TODO
         }
     }
 
