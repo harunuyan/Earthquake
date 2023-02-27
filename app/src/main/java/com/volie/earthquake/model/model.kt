@@ -1,12 +1,18 @@
 package com.volie.earthquake.model
 
 import android.graphics.Color
+import com.google.gson.annotations.SerializedName
 
 data class EarthquakeModel(
+
+    @SerializedName("mag")
     val magnitude: Double,
+
+    @SerializedName("title")
     val name: String,
-    val date: String,
-    val time: String
+
+    @SerializedName("date")
+    val dateAndTime: String
 ) {
     val magnitudeColor: Int
         get() = when (magnitude) {
@@ -24,4 +30,10 @@ data class EarthquakeModel(
         }
     val magnitudeText: String
         get() = String.format("%.1f", magnitude)
+
+    val date: String
+        get() = dateAndTime.split(" ")[0]
+
+    val time: String
+        get() = dateAndTime.split(" ")[1]
 }

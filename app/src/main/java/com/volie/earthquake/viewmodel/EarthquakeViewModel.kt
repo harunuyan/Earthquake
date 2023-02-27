@@ -14,15 +14,7 @@ class EarthquakeViewModel : ViewModel() {
 
     fun getEarthquakesFromRemote() {
         viewModelScope.launch {
-            val newEarthquakes = List(10) {
-                EarthquakeModel(
-                    (0..9).random().toDouble(),
-                    "İstanbul - $it",
-                    "12.02.2023",
-                    "12:00"
-                )
-            }
-            _earthquakes.postValue(newEarthquakes)
+
         }
     }
 }
