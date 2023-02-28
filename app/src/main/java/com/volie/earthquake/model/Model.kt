@@ -1,8 +1,11 @@
 package com.volie.earthquake.model
 
 import android.graphics.Color
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "earthquakes")
 data class EarthquakeModel(
 
     @SerializedName("mag")
@@ -14,6 +17,9 @@ data class EarthquakeModel(
     @SerializedName("date")
     val dateAndTime: String
 ) {
+    @PrimaryKey(autoGenerate = true)
+    var earthquakeId : Int = 0
+
     val magnitudeColor: Int
         get() = when (magnitude) {
             in 0.0..2.9 -> Color.parseColor("#3ff10c")

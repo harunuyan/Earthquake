@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface EarthquakeService {
 
-    @GET("live.php?limit=100")
+    @GET("live.php?limit=200")
     suspend fun getEarthquakesFromAPI(): Response<EarthquakeWrapper>
 }
