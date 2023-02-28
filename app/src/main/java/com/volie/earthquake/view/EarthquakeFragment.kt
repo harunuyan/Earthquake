@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.viewModelScope
 import com.volie.earthquake.databinding.FragmentEarthquakeBinding
 import com.volie.earthquake.view.adapter.EarthquakeAdapter
 import com.volie.earthquake.viewmodel.EarthquakeViewModel
@@ -31,11 +30,21 @@ class EarthquakeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         mBinding.recyclerView.adapter = mAdapter
-        initObserver()
         mViewModel.getEarthquakesFromRemote()
+        initObserver()
+
+        mBinding.swipeRefreshLayout.setOnRefreshListener {
+            with(mBinding) {
+                recyclerView.visibility = View.GONE
+                swipeRefreshLayout.isRefreshing = false
+            }
+            mViewModel.getEarthquakesFromRemote()
+            initObserver()
+        }
     }
 
     fun initObserver() {
+        mBinding.recyclerView.visibility = View.VISIBLE
         mViewModel.earthquakes.observe(viewLifecycleOwner) {
             mAdapter.setItems(it)
         }
@@ -45,5 +54,4 @@ class EarthquakeFragment : Fragment() {
         super.onDestroyView()
         _mBinding = null
     }
-
 }
