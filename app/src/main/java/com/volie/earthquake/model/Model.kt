@@ -15,10 +15,16 @@ data class EarthquakeModel(
     val name: String,
 
     @SerializedName("date")
-    val dateAndTime: String
+    val dateAndTime: String,
+
+    @SerializedName("lat")
+    val lat: Double?,
+
+    @SerializedName("lng")
+    val lng: Double?
 ) {
     @PrimaryKey(autoGenerate = true)
-    var earthquakeId : Int = 0
+    var uuid: Int = 0
 
     val magnitudeColor: Int
         get() = when (magnitude) {
@@ -42,4 +48,10 @@ data class EarthquakeModel(
 
     val time: String
         get() = dateAndTime.split(" ")[1]
+
+/*    val latText: String
+    get() = String.format("%.4f",lat)
+
+    val lngText: String
+    get() = String.format("%4f",lng)*/
 }

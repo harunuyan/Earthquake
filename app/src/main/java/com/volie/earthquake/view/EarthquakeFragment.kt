@@ -2,7 +2,6 @@ package com.volie.earthquake.view
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -38,7 +37,7 @@ class EarthquakeFragment : Fragment(), SearchView.OnQueryTextListener {
         super.onViewCreated(view, savedInstanceState)
 
         mBinding.recyclerView.adapter = mAdapter
-        mViewModel.getEarthquakes()
+        mViewModel.getEarthquakes() //TODO
         initObserver()
 
         mBinding.swipeRefreshLayout.setOnRefreshListener {
@@ -67,7 +66,7 @@ class EarthquakeFragment : Fragment(), SearchView.OnQueryTextListener {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return true
             }
-        },viewLifecycleOwner,Lifecycle.State.RESUMED)
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
     // Press enter

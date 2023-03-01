@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -43,10 +45,17 @@ android {
     buildFeatures {
         viewBinding true
     }
+    buildscript {
+        repositories {
+            google()
+        }
+    }
+
 }
 
 dependencies {
 
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
     def room_version = "2.5.0"
     def nav_version = "2.5.3"
     def retrofit_version = "2.9.0"
@@ -74,5 +83,6 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
-
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
 }

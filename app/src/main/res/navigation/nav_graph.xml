@@ -9,5 +9,20 @@
         android:id="@+id/earthquakeFragment"
         android:name="com.volie.earthquake.view.EarthquakeFragment"
         android:label="fragment_earthquake"
-        tools:layout="@layout/fragment_earthquake" />
+        tools:layout="@layout/fragment_earthquake">
+        <action
+            android:id="@+id/action_earthquakeFragment_to_earthquakeMapsFragment"
+            app:destination="@id/earthquakeMapsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/earthquakeMapsFragment"
+        android:name="com.volie.earthquake.view.EarthquakeMapsFragment"
+        android:label="EarthquakeMapsFragment">
+        <argument
+            android:name="uuid"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_earthquakeMapsFragment_to_earthquakeFragment"
+            app:destination="@id/earthquakeFragment" />
+    </fragment>
 </navigation>

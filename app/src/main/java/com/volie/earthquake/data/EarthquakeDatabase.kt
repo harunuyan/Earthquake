@@ -23,7 +23,8 @@ abstract class EarthquakeDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context,
                     EarthquakeDatabase::class.java, "database"
-                ).build()
+                ).allowMainThreadQueries()
+                    .fallbackToDestructiveMigration().build()
                 INSTANCE = instance
             }
             return INSTANCE!!

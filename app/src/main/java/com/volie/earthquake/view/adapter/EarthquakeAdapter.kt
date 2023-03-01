@@ -2,10 +2,12 @@ package com.volie.earthquake.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.volie.earthquake.databinding.AdapterItemEarthquakeBinding
 import com.volie.earthquake.model.EarthquakeModel
+import com.volie.earthquake.view.EarthquakeFragmentDirections
 
 class EarthquakeAdapter : RecyclerView.Adapter<EarthquakeAdapter.EarthquakeViewHolder>() {
 
@@ -22,6 +24,13 @@ class EarthquakeAdapter : RecyclerView.Adapter<EarthquakeAdapter.EarthquakeViewH
                 divider.setBackgroundColor(items[position].magnitudeColor)
                 cardMag.setBackgroundColor(items[position].magnitudeColor)
                 root.setBackgroundColor(items[position].magnitudeColorLight)
+                root.setOnClickListener {
+                    val action =
+                        EarthquakeFragmentDirections.actionEarthquakeFragmentToEarthquakeMapsFragment(
+                            items[position].uuid
+                        )
+                    Navigation.findNavController(it).navigate(action)
+                }
             }
         }
     }

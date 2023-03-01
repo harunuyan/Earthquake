@@ -20,7 +20,7 @@ class EarthquakeRepository(
             }.getOrNull()
             if (result?.isSuccessful == true) {
                 val list = result.body()?.data.orEmpty()
-                earthquakeDao.insert(list)
+                earthquakeDao.insertData(list)
                 list
             } else {
                 emptyList()
@@ -32,6 +32,10 @@ class EarthquakeRepository(
         return withContext(Dispatchers.IO) {
             earthquakeDao.getAllData()
         }
+    }
+
+    fun getEarthquakesMaps(uuid: Int): EarthquakeModel {
+        return earthquakeDao.getEarhquakes(uuid)
     }
 
     fun searchDatabase(searchQuery: String): LiveData<List<EarthquakeModel>> {

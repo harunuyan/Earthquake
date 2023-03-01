@@ -12,8 +12,11 @@ interface EarthquakeDao {
     @Query("SELECT * FROM earthquakes")
     fun getAllData(): List<EarthquakeModel>
 
+    @Query("SELECT * FROM earthquakes WHERE uuid = :uuid")
+    fun getEarhquakes(uuid: Int): EarthquakeModel
+
     @Insert
-    fun insert(earthquakeList: List<EarthquakeModel>)
+    fun insertData(earthquakeList: List<EarthquakeModel>)
 
     @Query("SELECT * FROM earthquakes WHERE name LIKE :searchQuery")
     fun searchDatabase(searchQuery: String): LiveData<List<EarthquakeModel>>
