@@ -7,17 +7,19 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.Navigation
 import com.volie.earthquake.R
 import com.volie.earthquake.databinding.FragmentEarthquakeBinding
+import com.volie.earthquake.model.EarthquakeModel
 import com.volie.earthquake.view.adapter.EarthquakeAdapter
 import com.volie.earthquake.viewmodel.EarthquakeViewModel
 
-class EarthquakeFragment : Fragment(), SearchView.OnQueryTextListener {
+class EarthquakeFragment : Fragment(), SearchView.OnQueryTextListener, EarthquakeAdapter.Listener {
 
     private var _mBinding: FragmentEarthquakeBinding? = null
     private val mBinding get() = _mBinding!!
 
-    private val mAdapter = EarthquakeAdapter()
+    private val mAdapter = EarthquakeAdapter(this)
     private lateinit var mViewModel: EarthquakeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +39,7 @@ class EarthquakeFragment : Fragment(), SearchView.OnQueryTextListener {
         super.onViewCreated(view, savedInstanceState)
 
         mBinding.recyclerView.adapter = mAdapter
-        mViewModel.getEarthquakes() //TODO
+        mViewModel.getEarthquakes()
         initObserver()
 
         mBinding.swipeRefreshLayout.setOnRefreshListener {
@@ -94,7 +96,7 @@ class EarthquakeFragment : Fragment(), SearchView.OnQueryTextListener {
         }
     }
 
-    fun initObserver() {
+    private fun initObserver() {
         mBinding.recyclerView.visibility = View.VISIBLE
         mViewModel.earthquakes.observe(viewLifecycleOwner) {
             mAdapter.setItems(it)
@@ -104,5 +106,12 @@ class EarthquakeFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onDestroyView() {
         super.onDestroyView()
         _mBinding = null
+    }
+
+    override fun onItemClick(earthquakeModel: EarthquakeModel) {
+        val action = EarthquakeFragmentDirections.actionEarthquakeFragmentToEarthquakeMapsFragment(
+            earthquakeModel
+        )
+        Navigation.findNavController(mBinding.root).navigate(action)
     }
 }

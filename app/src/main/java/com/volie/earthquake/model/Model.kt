@@ -1,10 +1,13 @@
 package com.volie.earthquake.model
 
 import android.graphics.Color
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "earthquakes")
 data class EarthquakeModel(
 
@@ -18,12 +21,12 @@ data class EarthquakeModel(
     val dateAndTime: String,
 
     @SerializedName("lat")
-    val lat: Double?,
+    val lat: Double,
 
     @SerializedName("lng")
-    val lng: Double?
-) {
-    @PrimaryKey(autoGenerate = true)
+    val lng: Double
+) : Parcelable {
+    @PrimaryKey(autoGenerate = false)
     var uuid: Int = 0
 
     val magnitudeColor: Int

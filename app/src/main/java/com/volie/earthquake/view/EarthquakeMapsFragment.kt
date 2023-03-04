@@ -13,32 +13,30 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.volie.earthquake.R
 import com.volie.earthquake.databinding.FragmentEarthquakeMapsBinding
+import com.volie.earthquake.model.EarthquakeModel
 import com.volie.earthquake.viewmodel.EarthquakeMapsViewModel
 
 class EarthquakeMapsFragment : Fragment() {
     private var _mBinding: FragmentEarthquakeMapsBinding? = null
     private val mBinding get() = _mBinding!!
-
     private lateinit var mViewModel: EarthquakeMapsViewModel
-    private var uuid = 0
-    private var lat = 0.0
-    private var lng = 0.0
-    private var name = ""
+    lateinit var args: EarthquakeModel
+
 
     private val callback = OnMapReadyCallback { googleMap ->
 
-        val earthquake = LatLng(lat, lng)
+        val earthquake = LatLng(args.lat, args.lng)
         googleMap.addMarker(
             MarkerOptions().position(earthquake)
-                .title("$name")
+                .title(args.name)
         )
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(earthquake, 10f))
-        googleMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
+        googleMap.mapType = GoogleMap.MAP_TYPE_HYBRID
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mViewModel = EarthquakeMapsViewModel(requireContext())
+        mViewModel = EarthquakeMapsViewModel()
     }
 
     override fun onCreateView(
@@ -53,32 +51,18 @@ class EarthquakeMapsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        observeLiveData()
-
         arguments?.let {
-            uuid = EarthquakeMapsFragmentArgs.fromBundle(it).uuid
+            args = EarthquakeMapsFragmentArgs.fromBundle(it).earthquakeParcelable
         }
-
-        mViewModel.getEarthquakesMaps(uuid)
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
 
-    }
-
-    private fun observeLiveData() {
-        mViewModel.earthquakeMapsLiveData.observe(viewLifecycleOwner) {
-            it?.let {
-                with(mBinding) {
-                    txtName.text = it.name
-                    txtDate.text = it.date
-                    txtTime.text = it.time
-                    txtMag.text = it.magnitudeText
-                }
-                name = it.name
-                lat = it.lat!!
-                lng = it.lng!!
-            }
+        with(mBinding.include) {
+            txtName.text = args.name
+            txtDate.text = args.date
+            txtTime.text = args.time
+            txtMag.text = args.magnitudeText
         }
     }
 }

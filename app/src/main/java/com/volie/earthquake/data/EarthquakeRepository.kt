@@ -34,10 +34,6 @@ class EarthquakeRepository(
         }
     }
 
-    fun getEarthquakesMaps(uuid: Int): EarthquakeModel {
-        return earthquakeDao.getEarhquakes(uuid)
-    }
-
     fun searchDatabase(searchQuery: String): LiveData<List<EarthquakeModel>> {
         return earthquakeDao.searchDatabase(searchQuery)
     }
