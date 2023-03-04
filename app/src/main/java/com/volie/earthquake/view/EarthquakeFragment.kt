@@ -40,11 +40,11 @@ class EarthquakeFragment : Fragment(), SearchView.OnQueryTextListener, Earthquak
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
         setupMenu()
+        setStatusAndNavBarColor()
         mBinding.recyclerView.adapter = mAdapter
         mViewModel.getEarthquakes()
-        swipeRefresh()
         initObserver()
-        setStatusAndNavBarColor()
+        swipeRefresh()
     }
 
     private fun setupMenu() {
@@ -76,12 +76,8 @@ class EarthquakeFragment : Fragment(), SearchView.OnQueryTextListener, Earthquak
 
     private fun swipeRefresh() {
         mBinding.swipeRefreshLayout.setOnRefreshListener {
-            with(mBinding) {
-                recyclerView.visibility = View.GONE
-                swipeRefreshLayout.isRefreshing = false
-            }
+            mBinding.swipeRefreshLayout.isRefreshing = false
             mViewModel.refreshEarthquakes()
-            initObserver()
         }
     }
 
@@ -106,7 +102,6 @@ class EarthquakeFragment : Fragment(), SearchView.OnQueryTextListener, Earthquak
     }
 
     private fun initObserver() {
-        mBinding.recyclerView.visibility = View.VISIBLE
         mViewModel.earthquakes.observe(viewLifecycleOwner) {
             mAdapter.setItems(it)
         }

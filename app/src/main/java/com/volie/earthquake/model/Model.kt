@@ -24,6 +24,9 @@ data class EarthquakeModel(
     @SerializedName("date")
     val dateAndTime: String,
 
+    @SerializedName("depth")
+    val depth: String,
+
     @SerializedName("lat")
     val lat: Double,
 

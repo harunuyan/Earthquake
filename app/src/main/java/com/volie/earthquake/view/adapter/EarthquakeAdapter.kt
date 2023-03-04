@@ -24,6 +24,7 @@ class EarthquakeAdapter(private val listener: Listener) :
                 txtName.text = items[position].name
                 txtDate.text = items[position].date
                 txtTime.text = items[position].time
+                txtDepth.text = items[position].depth
                 divider.setBackgroundColor(items[position].magnitudeColor)
                 cardMag.setCardBackgroundColor(items[position].magnitudeColor)
                 root.setBackgroundColor(items[position].magnitudeColorLight)
