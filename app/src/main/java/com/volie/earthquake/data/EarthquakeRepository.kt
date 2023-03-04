@@ -36,4 +36,12 @@ class EarthquakeRepository(
     fun searchDatabase(searchQuery: String): List<EarthquakeModel> {
         return earthquakeDao.searchDatabase(searchQuery)
     }
+
+    suspend fun sortHighMag(): List<EarthquakeModel> {
+        return earthquakeDao.sortHighMag()
+    }
+
+    suspend fun sortLowMag(): List<EarthquakeModel> {
+        return earthquakeDao.sortLowMag()
+    }
 }

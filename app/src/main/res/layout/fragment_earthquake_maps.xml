@@ -20,10 +20,13 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/adapter_item_earthquake"
+        layout="@layout/fragment_earthquake_include"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/map"
+        android:layout_marginBottom="75dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

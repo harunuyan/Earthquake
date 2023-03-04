@@ -2,6 +2,7 @@ package com.volie.earthquake.view
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -19,7 +20,6 @@ class EarthquakeFragment : Fragment(), SearchView.OnQueryTextListener, Earthquak
 
     private var _mBinding: FragmentEarthquakeBinding? = null
     private val mBinding get() = _mBinding!!
-
     private val mAdapter = EarthquakeAdapter(this)
     private lateinit var mViewModel: EarthquakeViewModel
 
@@ -38,6 +38,7 @@ class EarthquakeFragment : Fragment(), SearchView.OnQueryTextListener, Earthquak
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
         setupMenu()
         mBinding.recyclerView.adapter = mAdapter
         mViewModel.getEarthquakes()
@@ -51,7 +52,7 @@ class EarthquakeFragment : Fragment(), SearchView.OnQueryTextListener, Earthquak
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.search_menu, menu)
+                menuInflater.inflate(R.menu.earthquake_menu, menu)
                 // Search
                 val search = menu.findItem(R.id.search_item)
                 val searchView = search.actionView as? SearchView
@@ -61,9 +62,12 @@ class EarthquakeFragment : Fragment(), SearchView.OnQueryTextListener, Earthquak
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 when (menuItem.itemId) {
-                    android.R.id.home -> {
-                        requireActivity().onBackPressedDispatcher.onBackPressed()
-                    }
+                    android.R.id.home -> requireActivity()
+                        .onBackPressedDispatcher
+                        .onBackPressed()
+                    R.id.menu_sort_high_mag -> mViewModel.sortHighMag()
+                    R.id.menu_sort_low_mag -> mViewModel.sortLowMag()
+                    R.id.menu_sort_last_mag -> mViewModel.getEarthquakes()
                 }
                 return true
             }

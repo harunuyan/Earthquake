@@ -49,4 +49,18 @@ class EarthquakeViewModel(context: Context) : ViewModel() {
             _earthquakes.postValue(search)
         }
     }
+
+    fun sortHighMag() {
+        viewModelScope.launch {
+            val sortHigh = dataLayerHelper.repository.sortHighMag()
+            _earthquakes.postValue(sortHigh)
+        }
+    }
+
+    fun sortLowMag() {
+        viewModelScope.launch {
+            val sortLow = dataLayerHelper.repository.sortLowMag()
+            _earthquakes.postValue(sortLow)
+        }
+    }
 }

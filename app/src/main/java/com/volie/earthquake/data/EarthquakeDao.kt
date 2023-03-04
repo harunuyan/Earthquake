@@ -17,4 +17,10 @@ interface EarthquakeDao {
 
     @Query("SELECT * FROM earthquakes WHERE name LIKE '%' || :searchQuery || '%'")
     fun searchDatabase(searchQuery: String): List<EarthquakeModel>
+
+    @Query("SELECT * FROM earthquakes ORDER BY magnitude DESC")
+    suspend fun sortHighMag(): List<EarthquakeModel>
+
+    @Query("SELECT * FROM earthquakes ORDER BY magnitude ASC")
+    suspend fun sortLowMag(): List<EarthquakeModel>
 }

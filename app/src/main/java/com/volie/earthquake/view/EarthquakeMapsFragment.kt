@@ -70,6 +70,11 @@ class EarthquakeMapsFragment : Fragment() {
             txtDate.text = args.date
             txtTime.text = args.time
             txtMag.text = args.magnitudeText
+            cardMag.setCardBackgroundColor(args.magnitudeColor)
+            rootInclude.setBackgroundColor(args.magnitudeColorLight)
+/*            rootInclude.setOnClickListener {
+
+            }*/
         }
     }
 
