@@ -24,7 +24,10 @@ class EarthquakeMapsFragment : Fragment() {
 
 
     private val callback = OnMapReadyCallback { googleMap ->
+        setLocationInfo(googleMap)
+    }
 
+    private fun setLocationInfo(googleMap: GoogleMap) {
         val earthquake = LatLng(args.lat, args.lng)
         googleMap.addMarker(
             MarkerOptions().position(earthquake)
@@ -58,11 +61,20 @@ class EarthquakeMapsFragment : Fragment() {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
 
+        setDetailInfo()
+    }
+
+    private fun setDetailInfo() {
         with(mBinding.include) {
             txtName.text = args.name
             txtDate.text = args.date
             txtTime.text = args.time
             txtMag.text = args.magnitudeText
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _mBinding = null
     }
 }

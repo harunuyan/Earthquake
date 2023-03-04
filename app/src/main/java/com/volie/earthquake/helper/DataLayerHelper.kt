@@ -15,7 +15,7 @@ class DataLayerHelper(context: Context) {
         .build()
 
     private val database = EarthquakeDatabase.getInstance(context)
-    val earthquakeDao = database.earthquakeDao()
+    private val earthquakeDao = database.earthquakeDao()
 
     private val earthquakeService = retrofit.create(EarthquakeService::class.java)
     val repository = EarthquakeRepository(earthquakeService, earthquakeDao)

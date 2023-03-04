@@ -1,7 +1,6 @@
 package com.volie.earthquake.data
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import com.volie.earthquake.model.EarthquakeModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -34,7 +33,7 @@ class EarthquakeRepository(
         }
     }
 
-    fun searchDatabase(searchQuery: String): LiveData<List<EarthquakeModel>> {
+    fun searchDatabase(searchQuery: String): List<EarthquakeModel> {
         return earthquakeDao.searchDatabase(searchQuery)
     }
 }

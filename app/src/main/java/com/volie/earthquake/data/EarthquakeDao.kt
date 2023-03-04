@@ -1,6 +1,5 @@
 package com.volie.earthquake.data
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -16,6 +15,6 @@ interface EarthquakeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertData(earthquakeList: List<EarthquakeModel>)
 
-    @Query("SELECT * FROM earthquakes WHERE name LIKE :searchQuery")
-    fun searchDatabase(searchQuery: String): LiveData<List<EarthquakeModel>>
+    @Query("SELECT * FROM earthquakes WHERE name LIKE '%' || :searchQuery || '%'")
+    fun searchDatabase(searchQuery: String): List<EarthquakeModel>
 }

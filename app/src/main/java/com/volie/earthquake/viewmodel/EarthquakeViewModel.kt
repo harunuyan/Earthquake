@@ -27,12 +27,12 @@ class EarthquakeViewModel(context: Context) : ViewModel() {
     fun getEarthquakes() {
         viewModelScope.launch {
             val localData = getEarthquakesFromLocal()
-            if (localData.isNotEmpty()) {
-                _earthquakes.postValue(localData)
+            if (localData.isEmpty()) {
+                val remoteData = getEarthquakesFromRemote()
+                _earthquakes.postValue(remoteData)
                 return@launch
             }
-            val remoteData = getEarthquakesFromRemote()
-            _earthquakes.postValue(remoteData)
+            _earthquakes.postValue(localData)
         }
     }
 
@@ -43,7 +43,10 @@ class EarthquakeViewModel(context: Context) : ViewModel() {
         }
     }
 
-    fun searchDatabase(searchQuery: String): LiveData<List<EarthquakeModel>> {
-        return dataLayerHelper.repository.searchDatabase(searchQuery)
+    fun searchDatabase(searchQuery: String) {
+        viewModelScope.launch {
+            val search = dataLayerHelper.repository.searchDatabase(searchQuery)
+            _earthquakes.postValue(search)
+        }
     }
 }

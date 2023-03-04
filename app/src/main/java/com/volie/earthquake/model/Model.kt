@@ -11,6 +11,10 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "earthquakes")
 data class EarthquakeModel(
 
+    @SerializedName("earthquake_id")
+    @PrimaryKey()
+    var uuid: String,
+
     @SerializedName("mag")
     val magnitude: Double,
 
@@ -26,9 +30,6 @@ data class EarthquakeModel(
     @SerializedName("lng")
     val lng: Double
 ) : Parcelable {
-    @PrimaryKey(autoGenerate = false)
-    var uuid: Int = 0
-
     val magnitudeColor: Int
         get() = when (magnitude) {
             in 0.0..2.9 -> Color.parseColor("#3ff10c")
@@ -51,10 +52,4 @@ data class EarthquakeModel(
 
     val time: String
         get() = dateAndTime.split(" ")[1]
-
-/*    val latText: String
-    get() = String.format("%.4f",lat)
-
-    val lngText: String
-    get() = String.format("%4f",lng)*/
 }

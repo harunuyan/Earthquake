@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.volie.earthquake.model.EarthquakeModel
 
-@Database(entities = [EarthquakeModel::class], version = 2)
+@Database(entities = [EarthquakeModel::class], version = 1)
 abstract class EarthquakeDatabase : RoomDatabase() {
 
     abstract fun earthquakeDao(): EarthquakeDao
@@ -23,7 +23,7 @@ abstract class EarthquakeDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context,
                     EarthquakeDatabase::class.java, "database"
-                ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
+                ).allowMainThreadQueries().build()
                 INSTANCE = instance
             }
             return INSTANCE!!
