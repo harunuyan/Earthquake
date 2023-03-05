@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/earthquakeFragment"
         android:name="com.volie.earthquake.view.EarthquakeFragment"
-        android:label="fragment_earthquake"
+        android:label="Last"
         tools:layout="@layout/fragment_earthquake">
         <action
             android:id="@+id/action_earthquakeFragment_to_earthquakeMapsFragment"
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/earthquakeMapsFragment"
         android:name="com.volie.earthquake.view.EarthquakeMapsFragment"
-        android:label="EarthquakeMapsFragment">
+        android:label="Location">
         <action
             android:id="@+id/action_earthquakeMapsFragment_to_earthquakeFragment"
             app:destination="@id/earthquakeFragment" />
@@ -31,6 +31,6 @@
     <fragment
         android:id="@+id/earthquakeRiskMapFragment"
         android:name="com.volie.earthquake.view.EarthquakeRiskMapFragment"
-        android:label="fragment_earthquake_risk_map"
+        android:label="Risk Map"
         tools:layout="@layout/fragment_earthquake_risk_map" />
 </navigation>

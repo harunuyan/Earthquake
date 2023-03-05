@@ -34,6 +34,14 @@ class MainActivity : AppCompatActivity() {
         )
         mBinding.bottomNavigationView.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
+        setStatusAndNavBarColor()
+    }
+
+    fun setStatusAndNavBarColor() {
+        val window = window
+        val color = SurfaceColors.SURFACE_2.getColor(this)
+        window!!.statusBarColor = color
+        window.navigationBarColor = color
     }
 
 
