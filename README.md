@@ -20,10 +20,8 @@
 
 ## Android 📱 Application Screens 📸
 
-<img src="https://user-images.githubusercontent.com/55163968/222985650-d3b82304-2517-4ae5-9b3c-b5062007dfb2.png" width="250" />
-<img src="https://user-images.githubusercontent.com/55163968/222985661-c5be2595-c70f-4915-a60b-2110605df2c3.png" width="250" />
-<img src="https://user-images.githubusercontent.com/55163968/222985669-7bd87ff4-5fb3-44ca-9b42-8c5e44b09a64.png" width="250" />
-<img src="https://user-images.githubusercontent.com/55163968/222985674-f06410e7-d024-4fc4-9769-76390fef8e22.png" width="250" />
+<img src="https://user-images.githubusercontent.com/55163968/222985650-d3b82304-2517-4ae5-9b3c-b5062007dfb2.png" width="250" /><img src="https://user-images.githubusercontent.com/55163968/222985661-c5be2595-c70f-4915-a60b-2110605df2c3.png" width="250" />
+<img src="https://user-images.githubusercontent.com/55163968/222985669-7bd87ff4-5fb3-44ca-9b42-8c5e44b09a64.png" width="250" /><img src="https://user-images.githubusercontent.com/55163968/222985674-f06410e7-d024-4fc4-9769-76390fef8e22.png" width="250" />
 
 ## Pre-request for project
 
