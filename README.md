@@ -20,8 +20,8 @@
 
 ## Android 📱 Application Screens 📸 Pixel 6 Pro
 
-<img src="https://user-images.githubusercontent.com/55163968/222985650-d3b82304-2517-4ae5-9b3c-b5062007dfb2.png" width="250" /><img src="https://user-images.githubusercontent.com/55163968/222985661-c5be2595-c70f-4915-a60b-2110605df2c3.png" width="250" />
-<img src="https://user-images.githubusercontent.com/55163968/222985669-7bd87ff4-5fb3-44ca-9b42-8c5e44b09a64.png" width="250" /><img src="https://user-images.githubusercontent.com/55163968/222986194-bf40fb76-3adf-4c94-8116-d8857d13aeef.png" width="250" />
+<img src="https://user-images.githubusercontent.com/55163968/222985650-d3b82304-2517-4ae5-9b3c-b5062007dfb2.png" width="200" /><img src="https://user-images.githubusercontent.com/55163968/222985661-c5be2595-c70f-4915-a60b-2110605df2c3.png" width="200" />
+<img src="https://user-images.githubusercontent.com/55163968/222985669-7bd87ff4-5fb3-44ca-9b42-8c5e44b09a64.png" width="200" /><img src="https://user-images.githubusercontent.com/55163968/222986194-bf40fb76-3adf-4c94-8116-d8857d13aeef.png" width="200" />
 
 ## Pre-request for project
 
