@@ -5,7 +5,7 @@
 
 **Model - View - ViewModel (MVVM)** is the industry recognized software architecture pattern that overcomes all drawbacks of MVP and MVC design patterns. MVVM suggests separating the data presentation logic(Views or UI) from the core business logic part of the application
 
-![Screenshot](https://media.geeksforgeeks.org/wp-content/uploads/20210720231513/viewmodal.png)
+![Screenshot](https://miro.medium.com/v2/resize:fit:1100/format:webp/1*fEmAkjzVfRDLpHWEr4Tepg.png)
 
 
 ## Libraries 🛠 ⚙️
