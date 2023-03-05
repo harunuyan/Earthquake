@@ -70,7 +70,7 @@ class EarthquakeMapsFragment : Fragment() {
             txtDate.text = args.date
             txtTime.text = args.time
             txtMag.text = args.magnitudeText
-            txtDepth.text = args.depth
+            txtDepth.text = "Depth : ${args.depth}"
             cardMag.setCardBackgroundColor(args.magnitudeColor)
             rootInclude.setBackgroundColor(args.magnitudeColorLight)
         }

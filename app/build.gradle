@@ -48,10 +48,10 @@ android {
     }
     buildscript {
         repositories {
+            mavenCentral()
             google()
         }
     }
-
 }
 
 dependencies {
@@ -89,4 +89,8 @@ dependencies {
 
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+
+    // Coil
+    implementation "io.coil-kt:coil:2.2.2"
+
 }
