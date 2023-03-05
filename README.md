@@ -2,4 +2,4 @@
 # Last Earthquakes App
 Last Earthquakes app; Coroutines, Lifecycle, LiveData, ViewModel, Retrofit, Coil based on MVVM Architecture.<br/>
 <br/>
-Thanks to ![@orhanayd](https://github.com/orhanayd) for providing api : https://api.orhanaydogdu.com.tr/deprem/live & https://api.orhanaydogdu.com.tr/deprem/kandilli/live<br/>
+Thanks to [](https://github.com/orhanayd) for providing api : https://api.orhanaydogdu.com.tr/deprem/live & https://api.orhanaydogdu.com.tr/deprem/kandilli/live<br/>
