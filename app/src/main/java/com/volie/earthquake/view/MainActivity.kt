@@ -2,6 +2,8 @@ package com.volie.earthquake.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -14,39 +16,28 @@ import com.volie.earthquake.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private var _mBinding: ActivityMainBinding? = null
     private val mBinding get() = _mBinding!!
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        val navController = navHostFragment.navController
-        setupActionBarWithNavController(navController)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
 
-        val appBarConfig = AppBarConfiguration(
+        navController = navHostFragment.navController
+        val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.lastEarthquakesFragment,
-                R.id.riskMapFragment
+                R.id.earthquakeFragment,
+                R.id.earthquakeRiskMapFragment
             )
         )
         mBinding.bottomNavigationView.setupWithNavController(navController)
-        setupActionBarWithNavController(navController, appBarConfig)
-        setStatusAndNavBarColor()
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
-    fun setStatusAndNavBarColor() {
-        val window = window
-        val color = SurfaceColors.SURFACE_2.getColor(this)
-        window!!.statusBarColor = color
-        window.navigationBarColor =
-            color
-
-    }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.fragmentContainerView)
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 

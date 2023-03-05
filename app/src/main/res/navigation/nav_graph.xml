@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_earthquakeFragment_to_earthquakeMapsFragment"
             app:destination="@id/earthquakeMapsFragment" />
+        <action
+            android:id="@+id/action_earthquakeFragment_to_earthquakeRiskMapFragment2"
+            app:destination="@id/earthquakeRiskMapFragment" />
     </fragment>
     <fragment
         android:id="@+id/earthquakeMapsFragment"
@@ -25,4 +28,9 @@
             android:name="earthquakeParcelable"
             app:argType="com.volie.earthquake.model.EarthquakeModel" />
     </fragment>
+    <fragment
+        android:id="@+id/earthquakeRiskMapFragment"
+        android:name="com.volie.earthquake.view.EarthquakeRiskMapFragment"
+        android:label="fragment_earthquake_risk_map"
+        tools:layout="@layout/fragment_earthquake_risk_map" />
 </navigation>
