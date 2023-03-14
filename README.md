@@ -3,7 +3,7 @@
 
 data api -> https://api.orhanaydogdu.com.tr/deprem/kandilli/live <br/>
 
-Thanks for api https://github.com/orhanayd
+Thanks for api [@orhanayd]https://github.com/orhanayd
 
 ## Architecture 🏛
 
