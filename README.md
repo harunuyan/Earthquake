@@ -1,9 +1,8 @@
 # Last Earthquakes App
 ![Android Phones Wallpapers Free I Love Android Phones HD Wallpapers](https://user-images.githubusercontent.com/55163968/222984806-f55e8edc-bb7d-48d0-badf-a8917e48451d.jpeg)</br>
 
-data api -> https://api.orhanaydogdu.com.tr/deprem/kandilli/live <br/>
+Data api -> [API](https://api.orhanaydogdu.com.tr/deprem/kandilli/live) Thanks for [@orhanayd](https://github.com/orhanayd)</br>
 
-Thanks for api [@orhanayd]https://github.com/orhanayd
 
 ## Architecture 🏛
 
